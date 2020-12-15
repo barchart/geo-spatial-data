@@ -18,12 +18,12 @@ Areas of barren rock, sand, or snow usually show very low NDVI values (for examp
 #### How NDVI is calculated?
 The NDVI is derived from spectral reflectance measurements in the near-infrared region and in the red(visible) region, as follows:\
 NDVI = (NIR - Red) / (NIR + Red)\
-In general, if there is much more reflected radiation in near-infrared wavelengths than in visible wavelengths, then the vegetation in that pixel is likely to be dense.Subsequent work has shown that the NDVI is directly related to the photosynthetic capacity and hence energy absorption of plant canopies
+In general, if there is much more reflected radiation in near-infrared wavelengths than in visible wavelengths, then the vegetation in that pixel is likely to be dense. Subsequent work has shown that the NDVI is directly related to the photosynthetic capacity and hence energy absorption of plant canopies
 
 #### What is Normalized Difference Water Index(NDWI)?
 The Normalized Difference Water Index (NDWI) is a remote sensing derived index estimating the leaf
-water content at canopy level. NDWI ranges between -1 to +1, , depending on the leaf water content but also on the vegetation type and cover.
-It is therefore a very good proxy for plant water stress.  Its usefulness for drought monitoring and early warning has been demonstrated in different studies.
+water content at canopy level. NDWI ranges between -1 to +1, depending on the leaf water content but also on the vegetation type and cover.
+It is therefore a very good proxy for plant water stress. Its usefulness for drought monitoring and early warning has been demonstrated in different studies.
 
 #### How NDWI is calculated?
 The NDWI is derived from spectral reflectance measurements in the near-infrared region and in the short wave infrared (SWIR)  region, as follows:\
@@ -49,13 +49,22 @@ However, our crop classification dataset is published three months prior to USDA
 ## Section 2: Polygons
 
 #### What is the minimum / maximum area of a polygon?
+The minimum area of a polygon can be 1 pixel (30m * 30m), which means in this case, the user can get the time series of crop features of 1 pixel(point).\
+The maximum area of a polygon can be up to 57000 square kilometers (8000 pixels * 8000 pixels). The creation of the polygon has no shape limitation, but is required to be a convex polygon, which means no cross of polygon sides is allowed. The user can define a polygon which is across multiple districts/states, and only the feature data within the choson polygon will be returned.
 
 #### What happens if I create a polygon that is greater than or less than the specified minimum / maximum area limit?
+If one creates a polygon which is smaller than 1 pixel, then the feature data of the pixel which covers the created polygon will be returned.
+If one creates a polygon which is larger than the maximum limitation, an ERROR message will be return.\
+In fact, if the user wants to download the data of a certain district or state, no polygon is needed to create because the user can directly use the state/district code to get the feature data.
 
 #### What is a format of data is used to specify the polygon?
+The user needs to input the longitude and latitude of each vertex of the polygon to create the polygon. The created polygon is required to be a convex polygon, which means no cross of polygon sides is allowed.
 
 #### How do you calculate the total area of the polygons?
+We will count the number of all the valid and invalid pixels (denoted as N) which intersect the created polygon. Then the total area of the polygon will be N * 900 square meters.
 
+#### How do you calculate the valid area of the polygons?
+We will count the number of all valid pixels (denoted as n) which intersect the created polygon. Then the total area of the polygon will be n * 900 square meters. This means if the thick clouds lead to part of invalid data (no data) within the polygon, then this part of area ((N - n) * 900 square meters) would not be included in the calculation of total area.
 
 ## Section 3: API
 
