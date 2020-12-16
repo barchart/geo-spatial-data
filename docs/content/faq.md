@@ -45,7 +45,7 @@ Crop classification dataset is similar to USDA Cropland Data Layer (CDL), and ca
 However, our crop classification dataset is published three months prior to USDA CDL, and plan to expand the coverage to domiciles outside of US.
 
 #### What is the difference between this product and raw Sentinel-2 level-2A product?
-We provide NDVI, EVI, NDWI generated from the raw Sentinel-2 level-2A product. The most different aspect and advantage of this product is that\
+We provide NDVI, EVI, NDWI generated from the raw Sentinel-2 level-2A product. The most different aspect and advantage of this product is:\
 Clients can create polygons using longtitude and latitude series to download the data of the regions where they are interested in. Out clients can also directly download the data of US states or districts without download and clip raw satellite images on their own, which will save you a large quantity of time and storage space.
 
 
@@ -72,13 +72,13 @@ We will count the number of all valid pixels (denoted as n) which intersect the 
 ## Section 3: API
 
 #### How do we process satellite imagery
-This data product is generated from Sentinel-2 level-2A satellite images with 20m resolution. The Sentinel-2 level-2A product performs atmospheric correction based on the LIBRADTRAN radiative transfer model, by which it provides Bottom Of Atmosphere (BOA) reflectance images obtained from the associated Level-1C product. The image process consists of six steps.\
-1. The region covered by clouds were masked to ensure the accuracy of calculation of crop features such as NDVI.\
-2. We merged the tiles of Sentinel-2 level-2A images together for each 5-day period.\
-3. We reprojected the CRS (coordinate reference system) of merged images to that of CDL (cropland data layers) released by USDA and the resolution from 20m to 30m.\
-4. We clipped the merged images with shapefile of US states.\
-5. We adjusted the horizontal and vertical axis of the clipped images to match the CDL of US states at pixel level.\
-6. We calculated NDVI, EVI, NDWI based on the clipped images, and saved the results as geotiffs.\
+This data product is generated from Sentinel-2 level-2A satellite images with 20m resolution. The Sentinel-2 level-2A product performs atmospheric correction based on the LIBRADTRAN radiative transfer model, by which it provides Bottom Of Atmosphere (BOA) reflectance images obtained from the associated Level-1C product. The image process consists of six steps.
+  1. The region covered by clouds were masked to ensure the accuracy of calculation of crop features such as NDVI.
+  2. We merged the tiles of Sentinel-2 level-2A images together for each 5-day period.
+  3. We reprojected the CRS (coordinate reference system) of merged images to that of CDL (cropland data layers) released by USDA and the resolution from 20m to 30m.
+  4. We clipped the merged images with shapefile of US states.
+  5. We adjusted the horizontal and vertical axis of the clipped images to match the CDL of US states at pixel level.
+  6. We calculated NDVI, EVI, NDWI based on the clipped images, and saved the results as geotiffs.
 
 
 
