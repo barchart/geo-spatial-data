@@ -75,10 +75,15 @@ We will count the number of all valid pixels (denoted as n) which intersect the 
 This data product is generated from Sentinel-2 level-2A satellite images with 20m resolution. The Sentinel-2 level-2A product performs atmospheric correction based on the LIBRADTRAN radiative transfer model, by which it provides Bottom Of Atmosphere (BOA) reflectance images obtained from the associated Level-1C product. The image process consists of six steps.
   1. The region covered by clouds were masked to ensure the accuracy of calculation of crop features such as NDVI.
   2. We merged the tiles of Sentinel-2 level-2A images together for each 5-day period.
-  3. We reprojected the CRS (coordinate reference system) of merged images to that of CDL (cropland data layers) released by USDA and the resolution from 20m to 30m.
+  3. We reprojected the coordinate reference system (CRS) of merged images to that of cropland data layers (CDL) released by USDA and the resolution from 20m to 30m.
   4. We clipped the merged images with shapefile of US states.
   5. We adjusted the horizontal and vertical axis of the clipped images to match the CDL of US states at pixel level.
   6. We calculated NDVI, EVI, NDWI based on the clipped images, and saved the results as geotiffs.
+
+#### How to distinguish a certain place is covered by cloud?
+Sentinel-2 level 2A processing includes Scene Classification (SC) which provides a pixel classification map (cloud, cloud shadows, vegetation, soils/deserts, water, snow, etc.)\
+Link: https://sentinel.esa.int/web/sentinel/technical-guides/sentinel-2-msi/level-2a/algorithm \
+We will mask pixels which are classified as clouds or cloud shadows.
 
 
 
