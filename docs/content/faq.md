@@ -1,4 +1,4 @@
-## Dataset General Information
+## Section 1: Dataset General Information
 #### What dataset do we offer?
 We currently provide 4 datasets blow:
 
@@ -18,12 +18,12 @@ Areas of barren rock, sand, or snow usually show very low NDVI values (for examp
 #### How NDVI is calculated?
 The NDVI is derived from spectral reflectance measurements in the near-infrared region and in the red(visible) region, as follows:\
 NDVI = (NIR - Red) / (NIR + Red)\
-In general, if there is much more reflected radiation in near-infrared wavelengths than in visible wavelengths, then the vegetation in that pixel is likely to be dense.Subsequent work has shown that the NDVI is directly related to the photosynthetic capacity and hence energy absorption of plant canopies
+In general, if there is much more reflected radiation in near-infrared wavelengths than in visible wavelengths, then the vegetation in that pixel is likely to be dense. Subsequent work has shown that the NDVI is directly related to the photosynthetic capacity and hence energy absorption of plant canopies
 
 #### What is Normalized Difference Water Index(NDWI)?
 The Normalized Difference Water Index (NDWI) is a remote sensing derived index estimating the leaf
-water content at canopy level. NDWI ranges between -1 to +1, , depending on the leaf water content but also on the vegetation type and cover.
-It is therefore a very good proxy for plant water stress.  Its usefulness for drought monitoring and early warning has been demonstrated in different studies.
+water content at canopy level. NDWI ranges between -1 to +1, depending on the leaf water content but also on the vegetation type and cover.
+It is therefore a very good proxy for plant water stress. Its usefulness for drought monitoring and early warning has been demonstrated in different studies.
 
 #### How NDWI is calculated?
 The NDWI is derived from spectral reflectance measurements in the near-infrared region and in the short wave infrared (SWIR)  region, as follows:\
@@ -44,19 +44,45 @@ The crop classification dataset is a proprietary, raster, geo-referenced, crop-s
 Crop classification dataset is similar to USDA Cropland Data Layer (CDL), and can be used to generate crop mask, and estimate acreage for given regions.
 However, our crop classification dataset is published three months prior to USDA CDL, and plan to expand the coverage to domiciles outside of US.
 
-<!--
+#### What is the difference between this product and raw Sentinel-2 level-2A product?
+We provide NDVI, EVI, NDWI generated from the raw Sentinel-2 level-2A product. The most different aspect and advantage of this product is:\
+Clients can create polygons using longtitude and latitude series to download the data of the regions where they are interested in. Out clients can also directly download the data of US states or districts without download and clip raw satellite images on their own, which will save you a large quantity of time and storage space.
+
+
 ## Section 2: Polygons
 
 #### What is the minimum / maximum area of a polygon?
+The minimum area of a polygon can be 1 pixel (30m * 30m), which means in this case, the user can get the time series of crop features of 1 pixel(point).\
+The maximum area of a polygon can be up to 57000 square kilometers (8000 pixels * 8000 pixels). The creation of the polygon has no shape limitation, but is required to be a convex polygon, which means no cross of polygon sides is allowed. The user can define a polygon which is across multiple districts/states, and only the feature data within the choson polygon will be returned.
 
 #### What happens if I create a polygon that is greater than or less than the specified minimum / maximum area limit?
+If one creates a polygon which is smaller than 1 pixel, then the feature data of the pixel which covers the created polygon will be returned.
+If one creates a polygon which is larger than the maximum limitation, an ERROR message will be return.\
+In fact, if the user wants to download the data of a certain district or state, no polygon is needed to create because the user can directly use the state/district code to get the feature data.
 
 #### What is a format of data is used to specify the polygon?
+The user needs to input the longitude and latitude of each vertex of the polygon to create the polygon. The created polygon is required to be a convex polygon, which means no cross of polygon sides is allowed.
 
 #### How do you calculate the total area of the polygons?
+We will count the number of all the valid and invalid pixels (denoted as N) which intersect the created polygon. Then the total area of the polygon will be N * 900 square meters.
 
+#### How do you calculate the valid area of the polygons?
+We will count the number of all valid pixels (denoted as n) which intersect the created polygon. Then the total area of the polygon will be n * 900 square meters. This means if the thick clouds lead to part of invalid data (no data) within the polygon, then this part of area ((N - n) * 900 square meters) would not be included in the calculation of total area.
 
 ## Section 3: API
 
 #### How do we process satellite imagery
--->
+This data product is generated from Sentinel-2 level-2A satellite images with 20m resolution. The Sentinel-2 level-2A product performs atmospheric correction based on the LIBRADTRAN radiative transfer model, by which it provides Bottom Of Atmosphere (BOA) reflectance images obtained from the associated Level-1C product. The image process consists of six steps.
+  1. The region covered by clouds were masked to ensure the accuracy of calculation of crop features such as NDVI.
+  2. We merged the tiles of Sentinel-2 level-2A images together for each 5-day period.
+  3. We reprojected the coordinate reference system (CRS) of merged images to that of cropland data layers (CDL) released by USDA and the resolution from 20m to 30m.
+  4. We clipped the merged images with shapefile of US states.
+  5. We adjusted the horizontal and vertical axis of the clipped images to match the CDL of US states at pixel level.
+  6. We calculated NDVI, EVI, NDWI based on the clipped images, and saved the results as geotiffs.
+
+#### How to distinguish a certain place is covered by cloud?
+Sentinel-2 level 2A processing includes Scene Classification (SC) which provides a pixel classification map (cloud, cloud shadows, vegetation, soils/deserts, water, snow, etc.)\
+Link: https://sentinel.esa.int/web/sentinel/technical-guides/sentinel-2-msi/level-2a/algorithm \
+We will mask pixels which are classified as clouds or cloud shadows.
+
+
