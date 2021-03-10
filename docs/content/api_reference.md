@@ -1,6 +1,6 @@
 # API Reference
 
-## cmdty North America Grain Price API 1.0.0 {docsify-ignore}
+## cmdty Grain Geo-Spatial Data API 1.0.0 {docsify-ignore}
     
 > Access best-in-class intraday and historical cash grain prices for North America using Barchart&#x27;s REST-ful web service
 
