@@ -1,4 +1,4 @@
-## Section 1: Dataset General Information
+## Dataset General Information
 #### What dataset do we offer?
 We currently provide 4 datasets blow:
 
@@ -44,8 +44,7 @@ The crop classification dataset is a proprietary, raster, geo-referenced, crop-s
 Crop classification dataset is similar to USDA Cropland Data Layer (CDL), and can be used to generate crop mask, and estimate acreage for given regions.
 However, our crop classification dataset is published three months prior to USDA CDL, and plan to expand the coverage to domiciles outside of US.
 
-
-
+<!--
 ## Section 2: Polygons
 
 #### What is the minimum / maximum area of a polygon?
@@ -60,3 +59,4 @@ However, our crop classification dataset is published three months prior to USDA
 ## Section 3: API
 
 #### How do we process satellite imagery
+-->

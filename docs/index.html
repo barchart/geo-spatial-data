@@ -13,9 +13,9 @@
 <div id="app"></div>
 <script>
     window.$docsify = {
-        name: 'cmdty Crop Geo-spatial Data',
-        repo: 'git+https://github.com/barchart/cmdty-doc-grain-price',
-	    logo: '/static/cmdty-logo.png',
+        name: 'Ag Geo-spatial Data',
+        repo: 'git+https://github.com/barchart/geo-spatial-data',
+	    //logo: '/static/cmdty-logo.png',
         loadSidebar: true,
         coverpage: false,
         relativePath: false,
@@ -23,15 +23,29 @@
         notFoundPage: true,
         subMaxLevel: 2,
         auto2top: true,
+	    loadNavbar: true,
+	    // autoHeader:true,
         noCompileLinks: [
         	'/static/*.*',
             '/*static/*.*'
         ],
 	    alias: {
 		    '/': '/content/geotiff_overview'
+	    },
+	    search: 'auto', // default
+	    // complete configuration parameters
+	    search: {
+		    maxAge: 86400000, // Expiration time, the default one day
+		    paths: 'auto',
+		    placeholder: 'Type to search',
+		    noData: 'No Results!',
+		    // Headline depth, 1 - 6
+		    depth: 6,
+		    hideOtherSidebarContent: false, // whether or not to hide other sidebar content
 	    }
     }
 </script>
 <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+<script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
 </body>
 </html>

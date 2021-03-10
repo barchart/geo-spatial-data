@@ -6,17 +6,17 @@ Crop classification product is a land-cover mapping purpose prediction using rem
 
 
 ## Roadmap
-Geo-spatial images and crop classfication product are now available for the United States. The location coverage will increase to Canada at the end of 2020, and to other great agricultural countries by 2021.
+Geo-spatial images and crop classfication product are now available for the United States. The location coverage will increase to Canada by Q2 2020, and to South America by Q4 2021.
 
 
 ## What Datasets Are Included?
 
 |Dataset                 | Source                            | Data Coverage    | Frequency | Historical Start  | Historical End | Format | range |
 | :---------------------: | :----------: | :----------: | :-----------: |:-----------: |:-----------: |:-----------:|:-----------:
-| NDVI | Sentinel-2 level-2A | The United States |Every 5 days| 2018-04-01  | 2020-10-15  | Raster, Geotiff | -1~1 |
-| EVI | Sentinel-2 level-2A | The United States |Every 5 days| 2018-04-01  | 2020-10-15  | Raster, Geotiff | -1~1 |
-| NDWI | Sentinel-2 level-2A | The United States |Every 5 days| 2018-04-01  | 2020-10-15  | Raster, Geotiff | -1~1 |
-| Crop Classification| Barchart | The United States | Anuually | 2020  | 2020  | Raster, Geotiff | 0~255 |
+| NDVI | Barchart | US |Every 5 days| 2018-04-01  | At present  | Raster, Geotiff | -1~1 |
+| EVI | Barchart | US |Every 5 days| 2018-04-01  | At present  | Raster, Geotiff | -1~1 |
+| NDWI | Barchart | US |Every 5 days| 2018-04-01  | At present   | Raster, Geotiff | -1~1 |
+| Crop Classification| Barchart | US | Anuually | 2020  | 2020  | Raster, Geotiff | 0~255 |
 
 
 ## Parameters of Geo-Spatial Images
@@ -53,8 +53,8 @@ This product mainly focuses on the features of croplands. Consider cloud or snow
 
 For the crop classification result, all the labels are the same as cropland data layer (CDL) released by USDA, except for the unclassified pixels, which will be marked as 255 due to long term cloud effects. At the same time, the NODATA value is 0.
 
+<!--
 ## API Structure
-(Need to discuss more with Mike)
 |Attribute                 | Value                            | Description    | 
 | :---------------------: | :----------: | :----------: 
 | Start Date | 20180401 etc | Start date of downloading period |
@@ -63,10 +63,10 @@ For the crop classification result, all the labels are the same as cropland data
 | District | 10 etc | District code of state |
 | County_fips | 0 | County_fips code |
 | Polygon | (Python format polygon) | Polygon region of interest |
-
+-->
 
 ## Product Limitations
-For both
+For both Geo-Spatial Images and Crop Classification,
 * There would be a gap of ~1 pixel between the results and scenes, which is caused by resampling during the projection process.
 * The data of some pixels are missing due to serious cloud issue. These pixels are masked as no-data (with value 0).
 * The boundary of district level data might be different from that of CDL, which is caused by the small difference of boundary shapefile. But the accuracy of value would not be affected.

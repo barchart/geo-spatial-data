@@ -4,15 +4,6 @@
 
 **New**
 
-* Soft Launched  Documentation Site
-
-**Improved**
-* None
-
-**Bug fixes**
-* None
-
-**API Changelog**
-* None
+* Launched  Documentation Site
 
 
