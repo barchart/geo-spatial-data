@@ -1,25 +1,21 @@
 # API Reference
 
-## cmdty Grain Geo-Spatial Data API 1.0.0 {docsify-ignore}
-    
-> Access best-in-class intraday and historical cash grain prices for North America using Barchart&#x27;s REST-ful web service
+## OpenAPI Definition
 
-## OpenAPI Definition {docsify-ignore}
+* [Download OpenAPI Definition](static/openapi.yaml)
 
-[Download](static/openapi.yaml)
-
-## Contents {docsify-ignore}
+## Contents
 
 * [Servers](#Servers)
 * [Components](#Components)
 * [Paths](#Paths)
 
 
-## Servers {docsify-ignore}
+## Servers
 
 * [http://ondemand.websol.barchart.com/](http://ondemand.websol.barchart.com/)  - Production
 
-## Components {docsify-ignore}
+## Components
 
 ### Responses 
 
@@ -41,7 +37,7 @@
 
 * [JWT](/content/api/components?id=securityJWT)
 
-## Paths {docsify-ignore}
+## Paths
 
 * [GET /getCropFeatures](/content/api/paths?id=get-getCropFeatures)
 * [GET /getCropClassification](/content/api/paths?id=get-getCropClassification)
