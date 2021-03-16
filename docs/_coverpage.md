@@ -1,4 +1,4 @@
-# Geospatial Insights for Ag <small>1.0.0</small>
+# Geospatial Ag Data <small>1.0.0</small>
 
 >  Actionable outputs derived from geospatial imagery and curated for Agriculture markets.
 
