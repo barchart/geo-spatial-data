@@ -18,6 +18,12 @@ Our Geospatial Ag Data offering consists of two different "products" which are d
 ## Product Roadmap
 Our capabilities in this space are growing by the day and we're excited to partner with our clients to scale out our geospatial platfom even further.  Throughout 2021 our primary focus will be to increase coverage through the addition of new domiciles inclusive of South America.
 
+In addition to increasing our geographic coverage, we are looking at releasing an API service that will allow users to define a polygon region and retrieve derived information on a current and historical basis for the requested polygon.  This will open up additional use cases such as:
+* Monitoring crop growth within a large or small region based on these past and current year data.
+* Investigate how to use EVI, NDVI, NDWI to make crop classification without downloading the whole tiles like before.
+* Study the changing tendency of vegetation features during crop season.
+* Use our crop classifications to estimate production of crops within a certain (non-standard) region
+
 We're always learning and looking to improve our product, so please consider yourself a partner in this service.  If you have ideas on where we should go next please let us know - cmdty@barchart.com
 
 ## Support and Feature Requests
